@@ -1,6 +1,6 @@
 package com.scrapper.infections;
 
-import com.scrapper.country.ConutryService;
+import com.scrapper.country.CountryService;
 import com.scrapper.country.model.Country;
 import com.scrapper.infections.model.Infection;
 import com.scrapper.utilities.Scrapper;
@@ -24,7 +24,7 @@ public class InfectionController {
     private InfectionService infectionService;
 
     @Autowired
-    private ConutryService conutryService;
+    private CountryService conutryService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<Collection<Infection>> getInfection(){

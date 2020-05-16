@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ServerScrapper - Covido</title>
+    <link rel="stylesheet" href="w3.css">
+</head>
+<body ng-app="rootApp">
+
+
+<div class="w3-container w3-animate-opacity">
+
+    <div align="center" ng-app="topBarApp" ng-controller="topBarCtrl">
+        <img ng-click="changeView('index.html')" src="https://cdn.pixabay.com/photo/2016/11/09/16/24/virus-1812092_960_720.jpg" height="200"/>
+    </div>
+
+    <div align="center">
+        <a>CONTINENTS</a>
+    </div>
+    <div align="center" ing-app="continentsApp" ng-controller="continentsCtrl">
+    <table class="w3-table" align="center" width="60%">
+        <tr>
+            <th align="center" >
+                    <tr ng-repeat="continent in continents">
+                        <th>
+                            <p style="display:inline" align="left">{{continent}}</p>
+                        </th>
+                    </tr>
+            </th>
+        </tr>
+    </table>
+    </div>
+
+    <div align="center">
+        <a>COUNTRIES</a>
+    </div>
+    <div ing-app="countryApp" ng-controller="countryCtrl">
+    <table class="w3-table" align="center" width="60%">
+        <tr>
+            <th>
+                <p align="center">id</p>
+            </th>
+            <th>
+                <p align="center">Country</p>
+            </th>
+            <th>
+                <p align="center">Continent</p>
+            </th>
+        </tr>
+            <tr ng-repeat="country in countries">
+                    <td>
+                        <p>{{country.id}}</p>
+                    </td>
+                    <td>
+                        <p>{{country.name}}</p>
+                    </td>
+                    <td>
+                        <p>{{country.continent}}</p>
+                    </td>
+                </tr>
+            </tr>
+    </table>
+    </div>
+
+    <div align="center">
+        <a>© Copyrights Server_scrapper 2020</a>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="scripts/continents.js"></script>
+<script src="scripts/countries.js"></script>
+<script src="scripts/topBar.js"></script>
+<script>
+    var rootApp = angular.module('rootApp', ['continentsApp', 'countryApp', 'topBarApp']);
+</script>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ import java.util.Optional;
 public class CountryController {
 
     @Autowired
-    private ConutryService countryService;
+    private CountryService countryService;
 
     @Autowired
     private InfectionService infectionService;

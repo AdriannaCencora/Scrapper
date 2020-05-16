@@ -1,7 +1,7 @@
 package com.scrapper.country.impl;
 
 import com.scrapper.Continect.Continent;
-import com.scrapper.country.ConutryService;
+import com.scrapper.country.CountryService;
 import com.scrapper.country.model.Country;
 import com.scrapper.country.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Component
-public class CountryImpl implements ConutryService {
+public class CountryImpl implements CountryService {
 
     @Autowired
     private CountryRepository countryRepository;
