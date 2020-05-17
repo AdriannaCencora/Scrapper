@@ -1,9 +1,8 @@
-var countryApp = angular.module("countryApp", []);
+var countrysApp = angular.module("countrysApp", []);
 
-countryApp.controller("countryCtrl", function ($scope, $http) {
+countrysApp.controller("countrysCtrl", function ($scope, $http) {
     $http.get('http://localhost:8080/countries').then(function (response) {
         $scope.countries = response.data;
-        console.log($scope.countries)
     })
     $scope.edit = true;
     $scope.error = false;

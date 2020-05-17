@@ -36,7 +36,7 @@ public class CountryController {
                 orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @RequestMapping(value = "{id}/infections", method = RequestMethod.GET)
+    @RequestMapping(value = "infections/{id}", method = RequestMethod.GET)
     public ResponseEntity<Collection<Infection>> getCountryInfection(@PathVariable Integer id){
         Optional<Country> country = countryService.getCountryById(id);
         if(!country.isEmpty()){
@@ -45,7 +45,7 @@ public class CountryController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "{id}/infections_current", method = RequestMethod.GET)
+    @RequestMapping(value = "infections_current/{id}", method = RequestMethod.GET)
     public ResponseEntity<Infection> getCurrentCountryInfection(@PathVariable Integer id){
         Optional<Country> country = countryService.getCountryById(id);
         if(!country.isEmpty()){

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ServerScrapper - Covido</title>
+    <link rel="stylesheet" href="w3.css">
+</head>
+<body ng-app="rootApp">
+
+
+<div class="w3-container w3-animate-opacity">
+
+    <div align="center" ng-app="topBarApp" ng-controller="topBarCtrl">
+        <img ng-click="changeView('/')" src="https://cdn.pixabay.com/photo/2016/11/09/16/24/virus-1812092_960_720.jpg" height="200"/>
+    </div>
+
+    <div align="center" ing-app="countryApp" ng-controller="countryCtrl">
+        <h1>COUNTRY: {{country.name}}</h1>
+        <table class="w3-table" align="center" width="60%">
+            <tr ng-repeat="chart in chart_data">
+                <th>
+                    <div class="chart" id="chart_{{chart[0][1]}}" data-chart="{{chart}}"/>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div align="center">
+        <a>© Copyrights Server_scrapper 2020</a>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="scripts/topBar.js"></script>
+<script src="scripts/country.js"></script>
+<script>
+    var rootApp = angular.module('rootApp', ["ngRoute", 'countryApp', 'topBarApp']);
+    rootApp.config(function($routeProvider) {
+        $routeProvider
+            .when("/country_infections_current/", {
+                templateUrl: "country.html"
+            });
+    });
+</script>
+
+<script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    // google.charts.setOnLoadCallback(drawChart);
+
+    // Draw the chart and set the chart values
+    function drawChart(id, data_in) {
+        console.log(id)
+        console.log(data)
+        var data = google.visualization.arrayToDataTable(data_in);
+
+        // Optional; add a title and set the width and height of the chart
+        var options = {'title':data_in[0][1].toUpperCase(), 'width':550, 'height':400};
+
+        // Display the chart inside the <div> element with id="piechart"
+        var chart = new google.visualization.PieChart(document.getElementById(id));
+        chart.draw(data, options);
+    }
+
+    setTimeout(function () {
+        var elements = document.getElementsByClassName('chart');
+        for (var i=0; i<elements.length; i++){
+            google.charts.setOnLoadCallback(drawChart(elements[i].id, JSON.parse(elements[i].dataset.chart)))
+        }
+    },250)
+</script>
+
+</body>
+</html>

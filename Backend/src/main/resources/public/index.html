@@ -11,7 +11,7 @@
 <div class="w3-container w3-animate-opacity">
 
     <div align="center" ng-app="topBarApp" ng-controller="topBarCtrl">
-        <img ng-click="changeView('index.html')" src="https://cdn.pixabay.com/photo/2016/11/09/16/24/virus-1812092_960_720.jpg" height="200"/>
+        <img ng-click="changeView('/')" src="https://cdn.pixabay.com/photo/2016/11/09/16/24/virus-1812092_960_720.jpg" height="200"/>
     </div>
 
     <div align="center">
@@ -23,7 +23,7 @@
             <th align="center" >
                     <tr ng-repeat="continent in continents">
                         <th>
-                            <p style="display:inline" align="left">{{continent}}</p>
+                            <a style="display:inline" align="left" href="continent.html#!/continent_infections_current/{{continent}}">{{continent}}</a>
                         </th>
                     </tr>
             </th>
@@ -34,7 +34,7 @@
     <div align="center">
         <a>COUNTRIES</a>
     </div>
-    <div ing-app="countryApp" ng-controller="countryCtrl">
+    <div ing-app="countrysApp" ng-controller="countrysCtrl">
     <table class="w3-table" align="center" width="60%">
         <tr>
             <th>
@@ -52,7 +52,7 @@
                         <p>{{country.id}}</p>
                     </td>
                     <td>
-                        <p>{{country.name}}</p>
+                        <a href="country.html#!/continent_infections_current/{{country.id}}">{{country.name}}</a>
                     </td>
                     <td>
                         <p>{{country.continent}}</p>
@@ -73,7 +73,7 @@
 <script src="scripts/countries.js"></script>
 <script src="scripts/topBar.js"></script>
 <script>
-    var rootApp = angular.module('rootApp', ['continentsApp', 'countryApp', 'topBarApp']);
+    var rootApp = angular.module('rootApp', ['continentsApp', 'countrysApp', 'topBarApp']);
 </script>
 
 </body>
