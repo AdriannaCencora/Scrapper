@@ -3,6 +3,7 @@ var countryApp = angular.module("countryApp", []);
 countryApp.controller("countryCtrl", function ($scope, $http) {
     $http.get('http://localhost:8080/countries/infections_current/'+window.location.href.substring(window.location.href.lastIndexOf('/'))).then(function (response) {
         $scope.country = response.data;
+        console.log($scope.country)
         $scope.chart_data = {
             "totalCases": [
                 ["Country", "totalCases"],

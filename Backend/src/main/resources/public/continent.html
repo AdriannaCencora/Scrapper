@@ -12,10 +12,13 @@
 
     <div align="center" ng-app="topBarApp" ng-controller="topBarCtrl">
         <img ng-click="changeView('/')" src="https://cdn.pixabay.com/photo/2016/11/09/16/24/virus-1812092_960_720.jpg" height="200"/>
+        <br>
+        <button ng-click="UpdateData()">Update Data</button>
     </div>
 
     <div align="center" ing-app="continentApp" ng-controller="continentCtrl">
-        <h1>CONTINENT: {{name}}</h1>
+        <h1>CONTINENT: {{continent[0].country.continent}}</h1>
+        <h4>data from: {{continent[0].creationTime}}</h4>
         <table class="w3-table" align="center" width="60%">
             <tr ng-repeat="chart in chart_data">
                 <th>
@@ -53,8 +56,6 @@
 
     // Draw the chart and set the chart values
     function drawChart(id, data_in) {
-        console.log(id)
-        console.log(data)
         var data = google.visualization.arrayToDataTable(data_in);
 
         // Optional; add a title and set the width and height of the chart
